@@ -7,6 +7,8 @@ import { getAllPosts } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Post from '../types/post'
+import HeaderContainer from '../components/header-container'
+import Navigation from '../components/navigation'
 
 type Props = {
   allPosts: Post[]
@@ -19,10 +21,13 @@ const Index = ({ allPosts }: Props) => {
     <>
       <Layout>
         <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
+          <title>Adolfo Tamayo's personal site</title>
         </Head>
         <Container>
-          <Intro />
+          <HeaderContainer>
+            <Intro />
+            <Navigation />
+          </HeaderContainer>
           {heroPost && (
             <HeroPost
               title={heroPost.title}
@@ -33,7 +38,7 @@ const Index = ({ allPosts }: Props) => {
               excerpt={heroPost.excerpt}
             />
           )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {morePosts.length > 0 && <MoreStories posts={morePosts.slice(0, 4)} />}
         </Container>
       </Layout>
     </>
