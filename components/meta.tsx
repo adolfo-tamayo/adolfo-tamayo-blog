@@ -36,7 +36,7 @@ const Meta = () => {
         name="description"
         content={`Personal blog of Adolfo Tamayo. Sharing my learnings as a software engineer.`}
       />
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+      {/* <meta property="og:image" content={HOME_OG_IMAGE_URL} /> */}
     </Head>
   )
 }
