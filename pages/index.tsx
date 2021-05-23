@@ -9,6 +9,7 @@ import { CMS_NAME } from '../lib/constants'
 import Post from '../types/post'
 import HeaderContainer from '../components/header-container'
 import Navigation from '../components/navigation'
+import { SocialIcon } from 'react-social-icons';
 
 type Props = {
   allPosts: Post[]
@@ -28,7 +29,16 @@ const Index = ({ allPosts }: Props) => {
             <Intro />
             <Navigation />
           </HeaderContainer>
-          {heroPost && (
+          <div className="flex flex-col items-center justify-center pt-32 pb-32 whitespace-new-line" style={{width: "38rem", margin: "auto"}}>
+            <p> Hi! I'm Adolfo, a passionate software engineer interested in information systems, cloud computing, NLP and AI as well as technical leadership and mentoring. </p>
+            <p className="mt-4">Follow me at:</p>
+            <div className="flex flex-row">
+              {
+                ["https://www.linkedin.com/in/adolfo-tamayo/", "https://twitter.com/atamayobr", "https://www.instagram.com/adolfotb/"].map((link) => <div className="m-2"><SocialIcon url={link} bgColor="white" fgColor="black"/></div>)
+              }
+            </div>
+          </div>
+          {/* {heroPost && (
             <HeroPost
               title={heroPost.title}
               coverImage={heroPost.coverImage}
@@ -38,7 +48,7 @@ const Index = ({ allPosts }: Props) => {
               excerpt={heroPost.excerpt}
             />
           )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts.slice(0, 4)} />}
+          {morePosts.length > 0 && <MoreStories posts={morePosts.slice(0, 4)} />} */}
         </Container>
       </Layout>
     </>

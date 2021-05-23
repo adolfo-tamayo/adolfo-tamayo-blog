@@ -17,13 +17,13 @@ const Navigation = ()=>(
             </a>
           </Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item"> Temporary disable
           <Link href="/blog">
             <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75" href="#pablo">
               Blog
             </a>
           </Link>
-        </li>
+        </li> */}
       </ul>
     </div>
 )
