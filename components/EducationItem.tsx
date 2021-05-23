@@ -12,7 +12,7 @@ const EducationItem = ({data} : {data: any}) => {
       <h4 className="mb-2 text-sm md:text-sm pl-4">{data.start} - {data.end}</h4>
       <p className="mb-2 text-md md:text-md pl-4 whitespace-pre-line text-justify">{data.description}</p>
       <ul className="text-md md:text-md pl-6 whitespace-pre-line">
-        {data.projects.map((project) => {
+        {data.projects.map((project: any) => {
             return (
                 <li> {project.name} </li>
             )
