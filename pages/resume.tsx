@@ -13,7 +13,7 @@ const data = {
     items: [
       {
         name: "Universidad Catolica San Pablo",
-        logo: "https://media-exp1.licdn.com/dms/image/C560BAQEfoDgcVpQnPA/company-logo_100_100/0/1610042207753?e=1629936000&v=beta&t=iOskBseFIYncySyWRkX5lPFInYscipHBuewmgzxXenc",
+        logo: "https://media.licdn.com/dms/image/C4D0BAQE2w_kyyEOB4Q/company-logo_100_100/0/1677884975544?e=1687996800&v=beta&t=rhsn4qhVuUFIVizNVpodNvw-e1xKyR5kFUho3At7iAk",
         program: "Bsc. Computer Science",
         start: "Mar 2012",
         end: "Dec 2016",
@@ -30,7 +30,7 @@ const data = {
     experiences: [ // Ordered by time
       {
         name: "Inka labs",
-        logo: "https://media-exp1.licdn.com/dms/image/C4E0BAQHqXJsKK7wi9g/company-logo_100_100/0/1615848127873?e=1629936000&v=beta&t=9nsxnTBjL6P1ttVrqnTM372154xeTJ1sLW-r4rcUCmE",
+        logo: "https://media.licdn.com/dms/image/C4E0BAQHqXJsKK7wi9g/company-logo_100_100/0/1615848127873?e=1687996800&v=beta&t=rA3XfCIKgiM91qIW7oCNLoy-hD7QLrP2mScyzfeDPD8",
         role: 'Software Engineer',
         start: "Apr 2013",
         end: "May 2018",
@@ -38,7 +38,7 @@ const data = {
       },
       {
         name: "Universidad Catolica San Pablo",
-        logo: "https://media-exp1.licdn.com/dms/image/C560BAQEfoDgcVpQnPA/company-logo_100_100/0/1610042207753?e=1629936000&v=beta&t=iOskBseFIYncySyWRkX5lPFInYscipHBuewmgzxXenc",
+        logo: "https://media.licdn.com/dms/image/C4D0BAQE2w_kyyEOB4Q/company-logo_100_100/0/1677884975544?e=1687996800&v=beta&t=rhsn4qhVuUFIVizNVpodNvw-e1xKyR5kFUho3At7iAk",
         role: 'Teaching Assistant',
         start: "Apr 2014",
         end: "Jul 2014",
@@ -46,7 +46,7 @@ const data = {
       },
       {
         name: "Fincite",
-        logo: "https://media-exp1.licdn.com/dms/image/C4D0BAQG5BfldSoktBQ/company-logo_100_100/0/1597666667228?e=1629936000&v=beta&t=OHp9z5eQ_a__GK0XeC-kR6do8y3J7Ms6vD6XhYms9WA",
+        logo: "https://media.licdn.com/dms/image/C4E0BAQHsKzZ7kCEKaw/company-logo_100_100/0/1628522400595?e=1687996800&v=beta&t=APZ9tu2iFzy8tILYdAZq0K3rgjmcsl90V5TIEldGcik",
         role: 'Senior Software Engineer',
         start: "Jun 2018",
         end: "Nov 2019",
@@ -59,20 +59,46 @@ const data = {
       },
       {
         name: "Revolut",
-        logo: "https://media-exp1.licdn.com/dms/image/C560BAQFBLzULA8_fhg/company-logo_100_100/0/1580135947398?e=1629936000&v=beta&t=Tnlr1LSTdgtx_miDsziDMI1N47EE1X-tsVucqoiTEbM",
+        logo: "https://media.licdn.com/dms/image/C4E0BAQFO68BVzYerJQ/company-logo_100_100/0/1656690187447?e=1687996800&v=beta&t=37fyjRG_LTxLKl8UfNPc-piokLcjSAXGuJBBb0CBaH0",
         role: 'Senior Software Engineer',
         start: "Nov 2019",
         end: "Present",
         description: "\
-          Senior Python engineer building web services on Google Cloud Platform. \n \
-          Part of the interviewing team for new engineers. \n \
+          As a Senior Python Engineer, I contributed to the development of web services on the Google Cloud Platform and participated in the interviewing process for new engineering hires. \n \
           \n \
-          Spent the first 6 months at Revolut setting up the Compliance Product team, hiring and managing two other engineers and defining software architecture and integrations to streamline compliance processes. \n \
+          My initial six months at Revolut were spent establishing the Compliance Product team, recruiting and managing two engineers, as well as outlining software architecture and integrations to enhance compliance processes. \n \
           \n \
-          Later moved to the NLP team where the team and I developed several services like: \n \
-          * Training data management platform for the chatbot agent used in support, which improved the accuracy of the intent detection and chatbot CSAT by 27% \n \
-          * Orchestrator service to allow other internal teams to leverage NLP tools like intent detection, full text search, article recommendation ML models, etc. \n \
-          * Internal knowledge base data service with weighted hierarchical content relationships using PostgreSQL ltree module"
+          I then transitioned to the NLP team, where my colleagues and I developed several services, including: \n \
+          * A training data management platform for the support chatbot agent, which increased intent detection accuracy and customer satisfaction by 27% \n \
+          * An orchestrator service that enabled other internal teams to utilize NLP tools like intent detection, full-text search, and article recommendation machine learning models \n \
+          * An internal knowledge base data service that employed PostgreSQL's ltree module to create weighted hierarchical content relationships"
+      },
+      {
+        name: "Revolut",
+        logo: "https://media.licdn.com/dms/image/C4E0BAQFO68BVzYerJQ/company-logo_100_100/0/1656690187447?e=1687996800&v=beta&t=37fyjRG_LTxLKl8UfNPc-piokLcjSAXGuJBBb0CBaH0",
+        role: 'Lead Software Engineer (Python)',
+        start: "Nov 2019",
+        end: "June 2022",
+        description: "\
+          Additionally to the further development of the NLP products of the Help Centre CMS, the Chatbot, and translation services, I was involved in Python engineering function level initiatives, like trialing infrastructure migrations and providing input for common guidelines and development libraries creation.\n \
+          Mentoring of up to 5 other Python backend engineers across different teams and products like localisation, scheduling optimisation and our in house HR system. \
+          "
+      },
+      {
+        name: "Revolut",
+        logo: "https://media.licdn.com/dms/image/C4E0BAQFO68BVzYerJQ/company-logo_100_100/0/1656690187447?e=1687996800&v=beta&t=37fyjRG_LTxLKl8UfNPc-piokLcjSAXGuJBBb0CBaH0",
+        role: 'Lead Software Engineer',
+        start: "July 2022",
+        end: "Present",
+        description: "\
+        As the lead of the Technology Governance team, I've overseen the development of a platform for software governance. \n \
+        The platform includes: \n \
+          * Component catalog: Records metadata on software components, infrastructure definitions, and observability links. \n \
+          * SLO monitoring: Tier-based framework for evaluating service health and performance. \n \
+          * Service maps: Visualizes architecture, displaying individual components and dependencies. \n \
+          * Aggregate views: Organizes components by domains, teams, and departments, showing filtered lists and key stats. \n \
+          * Cost explorer: Provides a heatmap of expenses, navigable by department, product usage, and attributed component. \n \
+        "
       },
     ]
   },
