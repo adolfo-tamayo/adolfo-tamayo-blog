@@ -5,7 +5,7 @@ const EducationItem = ({data} : {data: any}) => {
   return (
     <div className="flex flex-row">
     <div className="flex-none w-128 items-center justify-center">
-      <Image src={data.logo} width={75} height={75}></Image>
+      <Image alt={`${data.name.toLowerCase()}-logo`}src={data.logo} width={75} height={75}></Image>
     </div>
     <div className="flex flex-grow flex-col">
       <h2 className="mb-2 text-xl md:text-xl tracking-tighter leading-tight pl-4">{data.program} at {data.name}</h2>
