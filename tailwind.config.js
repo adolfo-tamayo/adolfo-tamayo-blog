@@ -1,5 +1,9 @@
+// tailwind.config.js
+const colors = require('tailwindcss/colors');
+const typography = require('@tailwindcss/typography');
+
 module.exports = {
-  purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
+  content: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
     extend: {
       colors: {
@@ -30,4 +34,5 @@ module.exports = {
       },
     },
   },
-}
+  plugins: [typography],
+};

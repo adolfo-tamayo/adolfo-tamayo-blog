@@ -1,6 +1,10 @@
 import Link from 'next/link'
 
-const Navigation = ()=>(
+type NavigationProps = {
+  extraNav?: JSX.Element
+}
+
+const Navigation = ({ extraNav }: NavigationProps)=>(
     <div className="flex lg:flex-grow items-center" id="example-navbar-info">
       <ul className="flex flex-row list-none ml-auto">
         <li className="nav-item">
@@ -13,6 +17,12 @@ const Navigation = ()=>(
               Resume
           </Link>
         </li>
+        <li className="nav-item">
+          <Link href="/ai-tools" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75">
+              AI Experiments
+          </Link>
+        </li>
+        { extraNav }
         {/* <li className="nav-item"> Temporary disable
           <Link href="/blog">
             <a className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75">
