@@ -128,8 +128,6 @@ const Resume = () => {
             data.education.items.map((education)=> <EducationItem data={education}/>)
           }
           </div>
-          
-          
         </Container>
       </Layout>
     </>

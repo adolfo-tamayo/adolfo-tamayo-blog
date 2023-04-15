@@ -1,33 +1,46 @@
-# A statically generated blog example using Next.js, Markdown, and TypeScript
+# My Personal Blog: About Me, Resume, Experience, and AI Projects Portfolio
 
-This is the existing [blog-starter](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) plus TypeScript.
+Welcome to my personal blog built using Next.js, Markdown, and TypeScript. This site features an about me section, my resume and experience, and a set of portfolio projects where I experiment with various AI APIs.
 
-This example showcases Next.js's [Static Generation](https://nextjs.org/docs/basic-features/pages) feature using Markdown files as the data source.
+This site is based on the [blog-starter-typescript](https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript) template, showcasing Next.js's [Static Generation](https://nextjs.org/docs/basic-features/pages).
 
-The blog posts are stored in `/_posts` as Markdown files with front matter support. Adding a new Markdown file in there will create a new blog post.
+Additions include:
+* [NextAuth](https://next-auth.js.org/) for authentication
 
-To create the blog posts we use [`remark`](https://github.com/remarkjs/remark) and [`remark-html`](https://github.com/remarkjs/remark-html) to convert the Markdown files into an HTML string, and then send it down as a prop to the page. The metadata of every post is handled by [`gray-matter`](https://github.com/jonschlinkert/gray-matter) and also sent in props to the page.
+For the backend we are using:
+* Vercel Edge functions to run the backend that handles chat messages.
+* Langchain for abstractions to interact with LLMs
 
-## How to use
+## How to Run Locally
 
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?c=1&s=https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript)
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+1. Clone the repository:
 
 ```bash
-npx create-next-app --example blog-starter-typescript blog-starter-typescript-app
-# or
-yarn create next-app --example blog-starter-typescript blog-starter-typescript-app
+git clone https://github.com/adolfo-tamayo/adolfo-tamayo-blog.git
 ```
 
-Your blog should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
+2. Enter the project directory:
+```bash
+cd adolfo-tamayo-blog
+```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+3. Install dependencies using Yarn:
+```bash
+yarn
+```
 
-# Notes
+4. Set up your environment variables in a `.env` file in the project root:
+```
+NEXTAUTH_SECRET= // Randomly generated, check next-auth documentation
+GOOGLE_ID= // From Google Cloud Console > APIs & Services > OAuth consent screen
+GOOGLE_SECRET= // From Google Cloud Console > APIs & Services > OAuth consent screen
+OPENAI_API_KEY= // From your OpenAI account > Settings > User > API Keys
+```
 
-This blog-starter-typescript uses [Tailwind CSS](https://tailwindcss.com). To control the generated stylesheet's filesize, this example uses Tailwind CSS' v1.4 [`purge` option](https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css) to remove unused CSS.
+5. Start the development server
+
+```bash
+vercel dev
+```
+
+Now, the site should be up and running on [http://localhost:3000](http://localhost:3000)!
