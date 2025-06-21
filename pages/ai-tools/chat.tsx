@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSession, signOut } from "next-auth/react"
+import { useSession, getSession, signOut } from "next-auth/react"
 
 import AIToolsLayout from '../../components/ai-tools-layout'
 import SystemMessage from '../../components/chat/system-message'
@@ -74,3 +74,20 @@ const ChatScreen = () => {
 };
 
 export default ChatScreen
+
+export async function getServerSideProps(context: any) {
+  const session = await getSession(context)
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: { session }
+  }
+}
