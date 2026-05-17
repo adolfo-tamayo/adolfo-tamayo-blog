@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import { useSession, signOut } from "next-auth/react"
+import { getServerSession, type Session } from "next-auth"
+import { signOut } from "next-auth/react"
 
 import AIToolsLayout from '../../components/ai-tools-layout'
 import SystemMessage from '../../components/chat/system-message'
 import { availableModels, ModelSelector } from '../../components/chat/model-selector'
 import ChatArea from '../../components/chat/chat-area'
 import InputArea from '../../components/chat/input-area'
+import { authOptions } from "../api/auth/[...nextauth]"
 
-
-const ChatScreen = () => {
-  const { data: session } = useSession()
+const ChatScreen = ({ session }: { session: Session }) => {
   const [selectedModel, setSelectedModel] = useState(availableModels[0]);
   const [systemMessage, setSystemMessage] = useState('You are ChatGPT, a general language model that can provide assistance on a variety of subjects. Focus on being helpful, informative, and engaging.');
   const [messagesList, setMessagesList] = useState([
@@ -61,7 +61,7 @@ const ChatScreen = () => {
     }
   };
   return (
-    <AIToolsLayout title="AI Tools - Chat" session={session} signOut={signOut}>
+    <AIToolsLayout title="AI Portfolio - Chat" session={session} signOut={signOut}>
       <div className="flex flex-col">
       <ModelSelector model={selectedModel} onChange={setSelectedModel}/>
       <SystemMessage systemMessage={systemMessage} setSystemMessage={setSystemMessage}/>
@@ -74,3 +74,20 @@ const ChatScreen = () => {
 };
 
 export default ChatScreen
+
+export async function getServerSideProps(context: any) {
+  const session = await getServerSession(context.req, context.res, authOptions)
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: { session },
+  }
+}

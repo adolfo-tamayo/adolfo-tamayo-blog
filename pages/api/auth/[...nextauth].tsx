@@ -1,25 +1,24 @@
 import NextAuth from "next-auth"
+import type { NextAuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
-import EmailProvider from "next-auth/providers/email"
 
-if (!process.env.GOOGLE_ID || !process.env.GOOGLE_SECRET) {
-  throw new Error(
-    "Google OAuth environment variables are not configured correctly"
-  )
+const googleClientId = process.env.GOOGLE_ID
+const googleClientSecret = process.env.GOOGLE_SECRET
+
+export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: "/login",
+  },
+  providers:
+    googleClientId && googleClientSecret
+      ? [
+          GoogleProvider({
+            clientId: googleClientId,
+            clientSecret: googleClientSecret,
+          }),
+        ]
+      : [],
 }
 
-export default NextAuth({
-  secret: process.env.NEXTAUTH_SECRET,
-  providers: [
-    // OAuth authentication providers
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-    }),
-    // Sign in with passwordless email link
-    // EmailProvider({
-    //   server: process.env.MAIL_SERVER,
-    //   from: "<no-reply@example.com>",
-    // }),
-  ]
-})
+export default NextAuth(authOptions)

@@ -1,46 +1,54 @@
-# My Personal Blog: About Me, Resume, Experience, and AI Projects Portfolio
+# Adolfo Tamayo
 
-Welcome to my personal blog built using Next.js, Markdown, and TypeScript. This site features an about me section, my resume and experience, and a set of portfolio projects where I experiment with various AI APIs.
+Personal site for [adolfo-tamayo.me](https://adolfo-tamayo.me), built with Next.js, React, TypeScript, Tailwind CSS, shadcn-style primitives, NextAuth, and pnpm.
 
-This site is based on the [blog-starter-typescript](https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript) template, showcasing Next.js's [Static Generation](https://nextjs.org/docs/basic-features/pages).
+The public site is a minimal one-page profile. The `/ai-tools` area is intentionally protected behind Google authentication.
 
-Additions include:
-* [NextAuth](https://next-auth.js.org/) for authentication
+## Local Development
 
-For the backend we are using:
-* Vercel Edge functions to run the backend that handles chat messages.
-* Langchain for abstractions to interact with LLMs
-
-## How to Run Locally
-
-1. Clone the repository:
+Install dependencies:
 
 ```bash
-git clone https://github.com/adolfo-tamayo/adolfo-tamayo-blog.git
+pnpm install
 ```
 
-2. Enter the project directory:
-```bash
-cd adolfo-tamayo-blog
-```
-
-3. Install dependencies using Yarn:
-```bash
-yarn
-```
-
-4. Set up your environment variables in a `.env` file in the project root:
-```
-NEXTAUTH_SECRET= // Randomly generated, check next-auth documentation
-GOOGLE_ID= // From Google Cloud Console > APIs & Services > OAuth consent screen
-GOOGLE_SECRET= // From Google Cloud Console > APIs & Services > OAuth consent screen
-OPENAI_API_KEY= // From your OpenAI account > Settings > User > API Keys
-```
-
-5. Start the development server
+Pull Vercel development environment variables when needed:
 
 ```bash
-vercel dev
+vercel link
+vercel env pull .env.local
 ```
 
-Now, the site should be up and running on [http://localhost:3000](http://localhost:3000)!
+Start the dev server:
+
+```bash
+pnpm dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000).
+
+## Environment Variables
+
+Required for protected AI tools and auth:
+
+```bash
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=http://localhost:3000
+GOOGLE_ID=
+GOOGLE_SECRET=
+OPENAI_API_KEY=
+SECRET=
+```
+
+The public homepage should build and render without private runtime access. Protected routes should redirect unauthenticated visitors to the sign-in flow.
+
+## Verification
+
+```bash
+pnpm typecheck
+pnpm lint
+pnpm build
+pnpm test:e2e
+```
+
+Vercel should detect pnpm from `pnpm-lock.yaml`. This repo pins Node via `engines.node`; verify preview build logs before promoting a deployment.

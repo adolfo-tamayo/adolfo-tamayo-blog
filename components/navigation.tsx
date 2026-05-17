@@ -1,7 +1,8 @@
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 
 type NavigationProps = {
-  extraNav?: JSX.Element
+  extraNav?: ReactNode
 }
 
 const Navigation = ({ extraNav }: NavigationProps)=>(
@@ -19,7 +20,7 @@ const Navigation = ({ extraNav }: NavigationProps)=>(
         </li>
         <li className="nav-item">
           <Link href="/ai-tools" className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75">
-              AI Experiments
+              AI Portfolio
           </Link>
         </li>
         { extraNav }

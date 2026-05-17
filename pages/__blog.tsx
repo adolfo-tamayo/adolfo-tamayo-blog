@@ -20,7 +20,7 @@ const Blog = ({ posts }: Props) => {
     <>
       <Layout>
         <Head>
-          <title>Adolfo Tamayo's Blog</title>
+          <title>Adolfo Tamayo&apos;s Blog</title>
         </Head>
         <Container>
           <HeaderContainer>
@@ -44,9 +44,8 @@ export const getStaticProps = async () => {
       'coverImage',
       'excerpt',
     ])
-  
+
     return {
       props: { posts },
     }
   }
-  

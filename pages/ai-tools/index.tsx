@@ -1,8 +1,8 @@
-import Head from 'next/head'
-import { useSession, getSession, signOut } from "next-auth/react"
-import { useRouter } from 'next/router'
+import { getServerSession, type Session } from "next-auth"
+import { signOut } from "next-auth/react"
 import AIToolsLayout from '../../components/ai-tools-layout'
 import AvailableToolWidget from '../../components/available-tool-widget'
+import { authOptions } from "../api/auth/[...nextauth]"
 
 const availableToolList = [
   {
@@ -17,13 +17,11 @@ const availableToolList = [
   },
 ]
 
-const AIToolsLandingPage = () => {
-    const { data: session } = useSession()
-    const router = useRouter()
+const AIToolsLandingPage = ({ session }: { session: Session }) => {
     return (
-        <AIToolsLayout session={session} signOut={signOut} title="AI Experiments">
-          <h1 className="text-6xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8 mb-8">AI Tools</h1>
-                  <p>Portfolio of experiments with AI tools</p>
+        <AIToolsLayout session={session} signOut={signOut} title="AI Portfolio">
+          <h1 className="text-6xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8 mb-8">AI Portfolio</h1>
+                  <p>Selected AI experiments and internal tools.</p>
                   <br />
                   <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                     {availableToolList.map((tool, index) => {
@@ -36,7 +34,7 @@ const AIToolsLandingPage = () => {
 export default AIToolsLandingPage
 
 export async function getServerSideProps(context: any) {
-    const session = await getSession(context)
+    const session = await getServerSession(context.req, context.res, authOptions)
 
     if (!session) {
       return {
@@ -51,4 +49,3 @@ export async function getServerSideProps(context: any) {
       props: { session }
     }
   }
-  

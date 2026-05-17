@@ -7,10 +7,13 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
 
 # next.js
 /.next/
 /out/
+tsconfig.tsbuildinfo
 
 # production
 /build
@@ -33,3 +36,4 @@ yarn-error.log*
 
 # vercel
 .vercel
+.env*.local

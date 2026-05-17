@@ -4,6 +4,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import copy from 'clipboard-copy';
 import { dark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
+const CodeHighlighter = SyntaxHighlighter as any;
+
 type ChatMessage = {
     content: string,
     role: string
@@ -20,9 +22,9 @@ const ChatArea = ({ messages }: ChatAreaProps) => {
 
       return (
         <div className="relative">
-          <SyntaxHighlighter language={language} style={dark}>
+          <CodeHighlighter language={language} style={dark}>
             {codeWithoutLanguage}
-          </SyntaxHighlighter>
+          </CodeHighlighter>
           <button
             onClick={() => copy(codeWithoutLanguage)}
             className="absolute top-0 right-0 bg-gray-200 p-1 text-xs"
@@ -45,12 +47,14 @@ const ChatArea = ({ messages }: ChatAreaProps) => {
 
         const messageContent = segments.map((segment, index) => {
           if (segment.startsWith('```') && segment.endsWith('```')) {
-            return renderCodeBlock(segment)
+            return <div key={index}>{renderCodeBlock(segment)}</div>
           } else {
             return (
-            <ReactMarkdown remarkPlugins={[remarkGfm]} className="prose prose-sm">
-            { segment }
-            </ReactMarkdown>)
+            <div key={index} className="prose prose-sm">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                { segment }
+              </ReactMarkdown>
+            </div>)
           }
         });
           return (

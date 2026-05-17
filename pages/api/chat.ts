@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth/next"
-import authOptions from "./auth/[...nextauth]"
+import { authOptions } from "./auth/[...nextauth]"
 import { NextApiRequest, NextApiResponse } from 'next'
-import { ChatOpenAI } from "langchain/chat_models/openai";
-import { HumanChatMessage, SystemChatMessage, AIChatMessage, BaseChatMessage } from "langchain/schema";
+import { ChatOpenAI } from "@langchain/openai"
+import { AIMessage, BaseMessage, HumanMessage, SystemMessage } from "@langchain/core/messages"
 
 interface ChatMessageFromAPI {
     role: string
@@ -25,11 +25,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         temperature: 0.9
     })
     // Convert messages to LLM format
-    const messagesForLLM: BaseChatMessage[] = [];
+    const messagesForLLM: BaseMessage[] = [];
     [...previousMessages, { content: message, role: 'user'}].map((message: ChatMessageFromAPI) => {
         switch (true) {
             case (message.role === 'user'):
-                messagesForLLM.push(new HumanChatMessage(message.content))
+                messagesForLLM.push(new HumanMessage(message.content))
                 break
             case (message.role === 'system'):
                 // multiline string:
@@ -41,17 +41,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     \`\`\`python
                     print("Hello World")
                 `;
-                messagesForLLM.push(new SystemChatMessage(systemMessage))
+                messagesForLLM.push(new SystemMessage(systemMessage))
                 break
             case (message.role === 'assistant'):
-                messagesForLLM.push(new AIChatMessage(message.content))
+                messagesForLLM.push(new AIMessage(message.content))
             default:
                 break
         }
     });
     // Call LLM
-    const response = await chatLlm.call(messagesForLLM);
+    const response = await chatLlm.invoke(messagesForLLM);
 
     // Return response
-    res.status(200).json({ message: response.text })
+    res.status(200).json({ message: response.content })
 }
