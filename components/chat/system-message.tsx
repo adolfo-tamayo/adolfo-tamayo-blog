@@ -29,11 +29,18 @@ const SystemMessage = ({systemMessage, setSystemMessage}: SystemMessageProps) =>
     };
   
     return (
-      <div className="bg-gray-300 text-black p-4">
+      <div className="rounded-lg border border-border bg-background/70 p-4">
+        <p className="mb-2 text-sm uppercase tracking-[0.18em] text-muted-foreground">
+          System
+        </p>
         {!isEditing ? (
-          <span onClick={handleClick} className="cursor-pointer">
+          <button
+            type="button"
+            onClick={handleClick}
+            className="w-full cursor-pointer text-left text-sm leading-6 text-muted-foreground transition-colors hover:text-foreground"
+          >
             {systemMessage}
-          </span>
+          </button>
         ) : (
           <input
             type="text"
@@ -41,8 +48,8 @@ const SystemMessage = ({systemMessage, setSystemMessage}: SystemMessageProps) =>
             value={inputValue}
             onChange={handleChange}
             onBlur={handleBlur}
-            onKeyPress={handleKeyPress}
-            className="w-full p-2 rounded"
+            onKeyDown={handleKeyPress}
+            className="h-10 w-full rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground"
           />
         )}
       </div>

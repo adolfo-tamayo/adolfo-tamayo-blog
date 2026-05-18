@@ -25,7 +25,7 @@ export function Hero() {
           <div className="mt-7">
             <SocialLinks />
             <Button asChild variant="ghost" size="sm" className="mt-3 px-0 text-muted-foreground hover:bg-transparent hover:text-foreground">
-              <Link href="/ai-tools">
+              <Link href="/ai-portfolio">
                 <LockKeyhole aria-hidden="true" className="h-4 w-4" />
                 AI Portfolio
               </Link>

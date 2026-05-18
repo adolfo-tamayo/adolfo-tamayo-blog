@@ -12,7 +12,7 @@ import { authOptions } from "./api/auth/[...nextauth]"
 export default function LoginPage() {
   const router = useRouter()
   const callbackUrl =
-    typeof router.query.callbackUrl === "string" ? router.query.callbackUrl : "/ai-tools"
+    typeof router.query.callbackUrl === "string" ? router.query.callbackUrl : "/ai-portfolio"
 
   return (
     <>
@@ -75,7 +75,7 @@ export async function getServerSideProps(context: any) {
   if (session) {
     return {
       redirect: {
-        destination: "/ai-tools",
+        destination: "/ai-portfolio",
         permanent: false,
       },
     }

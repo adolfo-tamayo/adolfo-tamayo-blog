@@ -11,13 +11,13 @@ export const ModelSelector = ({model, onChange}: ModelSelectorProps) => {
     };
 
     return (
-        <div className="bg-gray-500 text-white p-4">
-        <label htmlFor="model-selector" className="mr-2">
-            Select model:
+        <div className="flex flex-col gap-2 rounded-lg border border-border bg-background/70 p-4 sm:flex-row sm:items-center sm:justify-between">
+        <label htmlFor="model-selector" className="text-sm uppercase tracking-[0.18em] text-muted-foreground">
+            Model
         </label>
         <select
             id="model-selector"
-            className="bg-white text-black p-1 rounded"
+            className="h-10 rounded-md border border-border bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground"
             value={model}
             onChange={handleModelChange}
         >
@@ -30,4 +30,3 @@ export const ModelSelector = ({model, onChange}: ModelSelectorProps) => {
         </div>
 );
 };
-

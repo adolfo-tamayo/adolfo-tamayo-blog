@@ -27,7 +27,7 @@ const ChatArea = ({ messages }: ChatAreaProps) => {
           </CodeHighlighter>
           <button
             onClick={() => copy(codeWithoutLanguage)}
-            className="absolute top-0 right-0 bg-gray-200 p-1 text-xs"
+            className="absolute right-2 top-2 rounded-md border border-border bg-background px-2 py-1 text-xs"
           >
             Copy
           </button>
@@ -36,13 +36,7 @@ const ChatArea = ({ messages }: ChatAreaProps) => {
     };
 
     const renderMessage = (message: ChatMessage, index: any) => {
-      if (message.role === 'system') {
-        return (
-          <div key={index} className="text-xs text-center my-2">
-            {message.content}
-          </div>
-        );
-      } else if (message.role === 'assistant') {
+      if (message.role === 'assistant') {
         const segments = message.content.split(/(```[\s\S]*?```)/g);
 
         const messageContent = segments.map((segment, index) => {
@@ -58,26 +52,34 @@ const ChatArea = ({ messages }: ChatAreaProps) => {
           }
         });
           return (
-            <div key={index} className="flex items-start my-2">
-              <div className="bg-blue-200 text-black rounded-lg p-2">
+            <div key={index} className="my-3 flex items-start">
+              <div className="max-w-3xl rounded-lg border border-border bg-background/70 p-4 leading-7">
                 {messageContent}
               </div>
           </div>
           );
       } else if (message.role === 'user') {
         return (
-          <div key={index} className="flex items-start justify-end my-2">
-            <div className="bg-green-200 text-black rounded-lg p-2">
+          <div key={index} className="my-3 flex items-start justify-end">
+            <div className="max-w-3xl rounded-lg bg-foreground p-4 leading-7 text-background">
               {message.content}
             </div>
           </div>
         );
       }
     };
+
+    const visibleMessages = messages.filter((message) => message.role !== "system");
   
     return (
-      <div className="flex-1 bg-gray-100 p-4 overflow-auto">
-        {messages.map((message, index) => renderMessage(message, index))}
+      <div className="min-h-72 flex-1 overflow-auto rounded-lg border border-border bg-muted/25 p-4">
+        {visibleMessages.length > 0 ? (
+          visibleMessages.map((message, index) => renderMessage(message, index))
+        ) : (
+          <div className="flex min-h-56 items-center justify-center text-center text-sm text-muted-foreground">
+            Conversation output appears here.
+          </div>
+        )}
       </div>
     );
   };

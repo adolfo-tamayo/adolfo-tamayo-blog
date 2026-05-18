@@ -62,12 +62,20 @@ const ChatScreen = ({ session }: { session: Session }) => {
   };
   return (
     <AIToolsLayout title="AI Portfolio - Chat" session={session} signOut={signOut}>
-      <div className="flex flex-col">
-      <ModelSelector model={selectedModel} onChange={setSelectedModel}/>
-      <SystemMessage systemMessage={systemMessage} setSystemMessage={setSystemMessage}/>
-      <ChatArea messages={messagesList}/>
-      <InputArea inputValue={inputValue} setInputValue={setInputValue} onSubmitMessage={onSubmitMessage} responseLoading={responseLoading}/>
-    </div>
+      <section className="mb-10">
+        <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] sm:text-7xl">
+          Chat
+        </h1>
+        <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
+          Private prompt workspace for quick model experiments.
+        </p>
+      </section>
+      <div className="grid gap-4">
+        <ModelSelector model={selectedModel} onChange={setSelectedModel}/>
+        <SystemMessage systemMessage={systemMessage} setSystemMessage={setSystemMessage}/>
+        <ChatArea messages={messagesList}/>
+        <InputArea inputValue={inputValue} setInputValue={setInputValue} onSubmitMessage={onSubmitMessage} responseLoading={responseLoading}/>
+      </div>
     </AIToolsLayout>
     
   );

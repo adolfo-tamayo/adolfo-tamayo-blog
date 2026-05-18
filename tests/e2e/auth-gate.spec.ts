@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test"
 
-test("ai tools route is protected for unauthenticated visitors", async ({ page }) => {
-  await page.goto("/ai-tools")
+test("ai portfolio route is protected for unauthenticated visitors", async ({ page }) => {
+  await page.goto("/ai-portfolio")
 
   await expect(page).toHaveURL(/\/login/)
   await expect(page.getByRole("button", { name: /sign in with google/i })).toBeVisible()

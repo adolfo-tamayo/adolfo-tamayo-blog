@@ -10,4 +10,4 @@ export function proxy(...args) {
   return authProxy(...args)
 }
 
-export const config = { matcher: ["/ai-tools/:path*"] }
+export const config = { matcher: ["/ai-portfolio/:path*"] }

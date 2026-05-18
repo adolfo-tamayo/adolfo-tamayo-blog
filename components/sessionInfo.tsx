@@ -7,19 +7,19 @@ type SessionInfoProps = {
 
 const SessionInfo = ({session, signOutCallback}: SessionInfoProps) => {
   return (
-    <div className="px-3 py-2 flex text-xs leading-snug">
-        <ul className="flex flex-row list-none ml-auto">
-            <li className="nav-item mr-4">
-                Welcome, {session.user?.name}
-            </li>
-            <li className="nav-item">
-                <a href="#" onClick={signOutCallback}>Sign out</a>
-            </li>
-        </ul>
-        
+    <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+      {session.user?.name ? (
+        <span className="max-w-48 truncate">{session.user.name}</span>
+      ) : null}
+      <button
+        type="button"
+        onClick={signOutCallback}
+        className="cursor-pointer rounded-md border border-border px-3 py-2 text-foreground transition-colors hover:bg-muted"
+      >
+        Sign out
+      </button>
     </div>
   )
 }
 
 export default SessionInfo
-

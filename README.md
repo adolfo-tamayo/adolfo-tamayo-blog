@@ -2,7 +2,7 @@
 
 Personal site for [adolfo-tamayo.me](https://adolfo-tamayo.me), built with Next.js, React, TypeScript, Tailwind CSS, shadcn-style primitives, NextAuth, and pnpm.
 
-The public site is a minimal one-page profile. The `/ai-tools` area is intentionally protected behind Google authentication.
+The public site is a minimal one-page profile. The `/ai-portfolio` area is intentionally protected behind Google authentication.
 
 ## Local Development
 
