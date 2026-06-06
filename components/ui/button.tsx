@@ -12,11 +12,14 @@ const buttonVariants = cva(
         default: "bg-foreground text-background hover:bg-foreground/88",
         outline: "border border-border bg-transparent hover:bg-muted",
         ghost: "hover:bg-muted",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
       },
       size: {
         default: "h-11 px-4 py-2",
         sm: "h-10 px-3",
         icon: "h-11 w-11",
+        "icon-sm": "h-8 w-8",
       },
     },
     defaultVariants: {

@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "streamdown/styles.css";
+
+@source "../node_modules/streamdown/dist/**/*.js";
 
 :root {
   --background: oklch(0.962 0.009 84);
@@ -8,6 +11,18 @@
   --border: oklch(0.765 0.012 84);
   --accent: oklch(0.56 0.092 164);
   --accent-foreground: oklch(0.982 0.006 84);
+  --primary: var(--foreground);
+  --primary-foreground: var(--background);
+  --secondary: oklch(0.91 0.008 84);
+  --secondary-foreground: var(--foreground);
+  --destructive: oklch(0.55 0.17 27);
+  --destructive-foreground: oklch(0.982 0.006 84);
+  --popover: oklch(0.982 0.006 84);
+  --popover-foreground: var(--foreground);
+  --card: oklch(0.982 0.006 84);
+  --card-foreground: var(--foreground);
+  --input: var(--border);
+  --ring: var(--foreground);
 }
 
 * {
