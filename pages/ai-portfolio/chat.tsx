@@ -11,6 +11,7 @@ import {
   ChevronsUpDown,
   Download,
   Eraser,
+  Info,
   MessagesSquare,
   SquareFunction,
 } from "lucide-react"
@@ -54,6 +55,12 @@ import { Suggestion, Suggestions } from "@/components/ai-elements/suggestion"
 import { Tool, ToolContent, ToolHeader, ToolInput, ToolOutput } from "@/components/ai-elements/tool"
 import AIToolsLayout from "@/components/ai-tools-layout"
 import { Button } from "@/components/ui/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 import { authOptions } from "../api/auth/[...nextauth]"
 
@@ -121,6 +128,21 @@ const starterPrompts = [
   "Inspect this prompt: Build an agent that drafts investor updates from rough notes.",
   "Draft a one-week execution plan for a document collaboration copilot.",
 ]
+
+const agentTools = [
+  {
+    name: "getPortfolioContext",
+    description: "Returns context about the portfolio, its stack, and the capabilities this demo highlights.",
+  },
+  {
+    name: "draftExecutionPlan",
+    description: "Turns an AI feature idea into a compact execution plan for today, a week, or a month.",
+  },
+  {
+    name: "inspectPrompt",
+    description: "Checks a prompt for a clear goal, useful constraints, and likely model behavior.",
+  },
+] as const
 
 const defaultSystemPrompt =
   "Be direct, technical, and practical. Use tools when they make the answer more inspectable. Keep answers compact unless asked to go deep."
@@ -455,11 +477,32 @@ const ChatScreen = ({ session }: { session: Session }) => {
 
           <section className="rounded-lg border border-border bg-background/70 p-5">
             <h2 className="text-sm font-medium">Agent tools</h2>
-            <ul className="mt-4 grid gap-3 text-sm leading-6 text-muted-foreground">
-              <li>getPortfolioContext</li>
-              <li>draftExecutionPlan</li>
-              <li>inspectPrompt</li>
-            </ul>
+            <TooltipProvider delayDuration={250}>
+              <ul className="mt-4 grid gap-3 text-sm leading-6 text-muted-foreground">
+                {agentTools.map((tool) => (
+                  <li key={tool.name} className="flex items-center justify-between gap-3">
+                    <span>{tool.name}</span>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button
+                          type="button"
+                          className="inline-flex size-7 shrink-0 cursor-help items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground"
+                          aria-label={`About ${tool.name}`}
+                        >
+                          <Info className="size-3.5" aria-hidden="true" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent
+                        side="left"
+                        className="max-w-64 text-pretty leading-5"
+                      >
+                        {tool.description}
+                      </TooltipContent>
+                    </Tooltip>
+                  </li>
+                ))}
+              </ul>
+            </TooltipProvider>
           </section>
         </aside>
       </section>
