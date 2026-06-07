@@ -252,7 +252,7 @@ const ChatScreen = ({ session }: { session: Session }) => {
           </div>
 
           <Conversation className="min-h-0 flex-1">
-            <ConversationContent className="min-h-full p-5">
+            <ConversationContent className="min-h-full p-5 pr-16">
               {messages.length === 0 ? (
                 <ConversationEmptyState
                   icon={<MessagesSquare className="h-10 w-10" />}
@@ -266,7 +266,7 @@ const ChatScreen = ({ session }: { session: Session }) => {
                       className={cn(
                         message.role === "user"
                           ? "max-w-[min(85%,36rem)] rounded-2xl bg-muted px-4 py-3 text-foreground"
-                          : "max-w-3xl text-sm leading-7"
+                          : "w-full max-w-3xl text-sm leading-7"
                       )}
                     >
                       {message.parts.map((part, index) => {
