@@ -176,6 +176,17 @@ const ChatScreen = ({ session }: { session: Session }) => {
   })
 
   const isRunning = status === "submitted" || status === "streaming"
+  const latestMessage = messages.at(-1)
+  const latestAssistantHasVisibleOutput =
+    latestMessage?.role === "assistant" &&
+    latestMessage.parts.some((part) => {
+      if (part.type === "text") {
+        return part.text.trim().length > 0
+      }
+
+      return isToolPart(part)
+    })
+  const showThinking = isRunning && !latestAssistantHasVisibleOutput
   const selectedModelMeta = models.find((model) => model.id === selectedModel) ?? models[0]
 
   const sendText = async (text: string) => {
@@ -287,7 +298,7 @@ const ChatScreen = ({ session }: { session: Session }) => {
                     <MessageContent
                       className={cn(
                         message.role === "user"
-                          ? "max-w-[min(85%,36rem)] rounded-2xl bg-muted px-4 py-3 text-foreground"
+                          ? "max-w-[min(85%,36rem)] rounded-2xl border border-border/70 bg-[var(--secondary)] px-4 py-3 text-foreground shadow-sm"
                           : "w-full max-w-3xl text-sm leading-7"
                       )}
                     >
@@ -320,7 +331,7 @@ const ChatScreen = ({ session }: { session: Session }) => {
                   </Message>
                 ))
               )}
-              {status === "submitted" ? (
+              {showThinking ? (
                 <Message from="assistant" aria-live="polite">
                   <MessageContent className="text-muted-foreground">
                     <div className="flex items-center gap-2 text-sm">
