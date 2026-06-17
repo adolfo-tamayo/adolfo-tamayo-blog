@@ -22,9 +22,9 @@ const availableToolList: PortfolioItem[] = [
   },
   {
     name: "Image generation",
-    description: "Text-to-image and image-to-image experiments for prompt craft, visual iteration, and reference-guided generation.",
+    description: "A live text-to-image playground for prompt craft, model selection, visual iteration, and downloadable outputs.",
     link: "/ai-portfolio/image-gen",
-    status: "Draft",
+    status: "Live",
   },
   {
     name: "Voice lab",
